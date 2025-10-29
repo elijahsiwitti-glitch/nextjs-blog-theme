@@ -4,7 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Layout } from "@/components/layout/Layout"; // Import the new Layout component
+import { MainLayout } from "@/components/layout/MainLayout"; // Import MainLayout directly
 import IndexPage from "./pages/Index";
 import ProfilePage from "./pages/ProfilePage";
 import InnovationPage from "./pages/InnovationPage";
@@ -25,7 +25,7 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Layout />}> {/* Use the new Layout component here */}
+            <Route path="/" element={<MainLayout />}> {/* Use MainLayout directly here */}
               <Route index element={<IndexPage />} />
               <Route path="profile" element={<ProfilePage />} />
               <Route path="innovation" element={<InnovationPage />} />
