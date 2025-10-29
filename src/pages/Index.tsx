@@ -3,7 +3,7 @@
 import HeroSection from "@/components/home/HeroSection";
 import FeaturedContentCarousel from "@/components/home/FeaturedContentCarousel";
 
-const HomePage = () => {
+const IndexPage = () => {
   const featuredCampaigns = [
     {
       id: "1",
@@ -54,4 +54,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default IndexPage;
