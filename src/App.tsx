@@ -11,7 +11,8 @@ import InnovationPage from "./pages/InnovationPage";
 import CommunitiesPage from "./pages/CommunitiesPage";
 import LeaderboardPage from "./pages/LeaderboardPage";
 import CommunityDetailPage from "./pages/CommunityDetailPage";
-import SettingsPage from "./pages/SettingsPage"; // Import the new SettingsPage
+import SettingsPage from "./pages/SettingsPage";
+import TopicDetailPage from "./pages/TopicDetailPage"; // Import the new TopicDetailPage
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,8 +31,9 @@ const App = () => (
               <Route path="innovation" element={<InnovationPage />} />
               <Route path="communities" element={<CommunitiesPage />} />
               <Route path="communities/:id" element={<CommunityDetailPage />} />
+              <Route path="communities/:id/topics/:topicId" element={<TopicDetailPage />} /> {/* Add the new route for TopicDetailPage */}
               <Route path="leaderboard" element={<LeaderboardPage />} />
-              <Route path="settings" element={<SettingsPage />} /> {/* Add the new route for SettingsPage */}
+              <Route path="settings" element={<SettingsPage />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Route>

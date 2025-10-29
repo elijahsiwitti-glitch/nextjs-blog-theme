@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Users, MessageSquare, ArrowLeft } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
+import TopicCard from "@/components/communities/TopicCard"; // Import the new TopicCard
 
 const CommunityDetailPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -69,15 +70,13 @@ const CommunityDetailPage = () => {
       <div className="space-y-4">
         {mockCommunity.topics.length > 0 ? (
           mockCommunity.topics.map((topic) => (
-            <Card key={topic.id}>
-              <CardContent className="p-4 flex justify-between items-center">
-                <div>
-                  <h3 className="text-lg font-semibold">{topic.title}</h3>
-                  <p className="text-sm text-muted-foreground">{topic.posts} posts</p>
-                </div>
-                <Button variant="outline" size="sm">View Topic</Button>
-              </CardContent>
-            </Card>
+            <TopicCard
+              key={topic.id}
+              communityId={mockCommunity.id!}
+              topicId={topic.id}
+              title={topic.title}
+              posts={topic.posts}
+            />
           ))
         ) : (
           <p className="text-muted-foreground">No discussions yet. Be the first to start one!</p>
