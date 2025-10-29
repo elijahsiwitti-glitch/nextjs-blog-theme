@@ -31,7 +31,9 @@ export function Navbar() {
         <DropdownMenuContent align="end">
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>Settings</DropdownMenuItem>
+          <DropdownMenuItem asChild>
+            <Link to="/settings">Settings</Link> {/* Link to the new SettingsPage */}
+          </DropdownMenuItem>
           <DropdownMenuItem>Support</DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem>Logout</DropdownMenuItem>
