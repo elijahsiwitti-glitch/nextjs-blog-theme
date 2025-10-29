@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import IdeaCard from "@/components/innovation/IdeaCard";
-import SubmitIdeaDialog from "@/components/innovation/SubmitIdeaDialog";
+import SubmitIdeaDialog from "@/components/innovation/SubmitIdeaDialog"; // Import the new dialog
 
 const InnovationPage = () => {
   // Mock data for demonstration
