@@ -1,7 +1,9 @@
 "use client";
 
 import CommunityCard from "@/components/communities/CommunityCard";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import CreateCommunityDialog from "@/components/communities/CreateCommunityDialog"; // Import the new dialog
+import { Button } from "@/components/ui/button";
+import { Plus } from "lucide-react";
 
 const CommunitiesPage = () => {
   // Mock data for demonstration
@@ -44,6 +46,11 @@ const CommunitiesPage = () => {
     <div className="container mx-auto px-4 py-8">
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-3xl font-bold">Communities & Chat</h1>
+        <CreateCommunityDialog>
+          <Button>
+            <Plus className="mr-2 h-4 w-4" /> Create Community
+          </Button>
+        </CreateCommunityDialog>
       </div>
 
       <p className="text-lg text-muted-foreground mb-8">
