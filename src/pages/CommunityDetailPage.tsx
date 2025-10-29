@@ -4,9 +4,10 @@ import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Users, MessageSquare, ArrowLeft } from "lucide-react";
+import { Users, MessageSquare, ArrowLeft, Plus } from "lucide-react"; // Added Plus icon
 import { Separator } from "@/components/ui/separator";
-import TopicCard from "@/components/communities/TopicCard"; // Import the new TopicCard
+import TopicCard from "@/components/communities/TopicCard";
+import CreateTopicDialog from "@/components/communities/CreateTopicDialog"; // Import the new dialog
 
 const CommunityDetailPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -41,14 +42,21 @@ const CommunityDetailPage = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="mb-6 flex items-center gap-4">
-        <Button variant="outline" size="icon" asChild>
-          <Link to="/communities">
-            <ArrowLeft className="h-4 w-4" />
-            <span className="sr-only">Back to Communities</span>
-          </Link>
-        </Button>
-        <h1 className="text-3xl font-bold">{mockCommunity.name}</h1>
+      <div className="mb-6 flex items-center justify-between"> {/* Added justify-between */}
+        <div className="flex items-center gap-4">
+          <Button variant="outline" size="icon" asChild>
+            <Link to="/communities">
+              <ArrowLeft className="h-4 w-4" />
+              <span className="sr-only">Back to Communities</span>
+            </Link>
+          </Button>
+          <h1 className="text-3xl font-bold">{mockCommunity.name}</h1>
+        </div>
+        <CreateTopicDialog communityId={mockCommunity.id}> {/* Integrated CreateTopicDialog */}
+          <Button>
+            <Plus className="mr-2 h-4 w-4" /> Create Topic
+          </Button>
+        </CreateTopicDialog>
       </div>
 
       <Card className="mb-8">
