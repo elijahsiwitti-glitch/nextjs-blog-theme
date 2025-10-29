@@ -14,7 +14,7 @@ import {
 
 export function Navbar() {
   return (
-    <header className="flex h-14 items-center gap-4 border-b bg-background px-4 lg:h-[60px] lg:px-6 md:ml-64">
+    <header className="flex h-14 items-center gap-4 border-b bg-background px-4 lg:h-[60px] lg:px-6"> {/* Removed md:ml-64 from here */}
       <Sidebar />
       <div className="flex-1">
         <Link to="/" className="flex items-center gap-2 font-semibold md:hidden">
@@ -32,7 +32,7 @@ export function Navbar() {
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem asChild>
-            <Link to="/settings">Settings</Link> {/* Link to the new SettingsPage */}
+            <Link to="/settings">Settings</Link>
           </DropdownMenuItem>
           <DropdownMenuItem>Support</DropdownMenuItem>
           <DropdownMenuSeparator />
