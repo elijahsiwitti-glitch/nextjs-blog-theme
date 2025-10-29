@@ -6,17 +6,37 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, MessageSquare } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
+import CommentCard from "@/components/communities/CommentCard"; // Import new CommentCard
+import CommentForm from "@/components/communities/CommentForm"; // Import new CommentForm
 
 const TopicDetailPage = () => {
   const { id: communityId, topicId } = useParams<{ id: string; topicId: string }>();
 
   // Mock data for demonstration. In a real app, you'd fetch this from an API.
-  const mockTopic = {
+  const [mockTopic, setMockTopic] = React.useState({
     id: topicId,
     title: "Zero Waste Living Tips",
     description: "Let's share our best tips and tricks for reducing waste in our daily lives. From composting to reusable products, what are your go-to strategies?",
     posts: 50,
     communityName: "Sustainable Living",
+    comments: [
+      { id: "c1", author: "Alice Green", content: "I've found that making my own cleaning supplies with vinegar and baking soda drastically reduces plastic waste!", timestamp: "2 hours ago" },
+      { id: "c2", author: "Bob Eco", content: "Don't forget to check for local refill stations for things like soap and shampoo. It's a game-changer!", timestamp: "1 hour ago" },
+    ],
+  });
+
+  const handleNewComment = (content: string) => {
+    const newComment = {
+      id: `c${mockTopic.comments.length + 1}`,
+      author: "Current User", // In a real app, this would be the logged-in user's name
+      content: content,
+      timestamp: "Just now",
+    };
+    setMockTopic((prevTopic) => ({
+      ...prevTopic,
+      comments: [...prevTopic.comments, newComment],
+      posts: prevTopic.posts + 1, // Increment post count
+    }));
   };
 
   if (!mockTopic.id) {
@@ -59,12 +79,20 @@ const TopicDetailPage = () => {
 
       <h2 className="text-2xl font-bold mb-4">Comments</h2>
       <div className="space-y-4">
-        {/* Placeholder for comments section */}
-        <Card>
-          <CardContent className="p-4 text-muted-foreground">
-            No comments yet. Be the first to share your thoughts!
-          </CardContent>
-        </Card>
+        <CommentForm onSubmit={handleNewComment} />
+        <Separator className="my-6" />
+        {mockTopic.comments.length > 0 ? (
+          mockTopic.comments.map((comment) => (
+            <CommentCard
+              key={comment.id}
+              author={comment.author}
+              content={comment.content}
+              timestamp={comment.timestamp}
+            />
+          ))
+        ) : (
+          <p className="text-muted-foreground text-center">No comments yet. Be the first to share your thoughts!</p>
+        )}
       </div>
     </div>
   );
