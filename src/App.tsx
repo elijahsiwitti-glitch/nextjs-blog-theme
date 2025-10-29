@@ -10,6 +10,7 @@ import ProfilePage from "./pages/ProfilePage";
 import InnovationPage from "./pages/InnovationPage";
 import CommunitiesPage from "./pages/CommunitiesPage";
 import LeaderboardPage from "./pages/LeaderboardPage";
+import CommunityDetailPage from "./pages/CommunityDetailPage"; // Import the new page
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,6 +28,8 @@ const App = () => (
               <Route path="profile" element={<ProfilePage />} />
               <Route path="innovation" element={<InnovationPage />} />
               <Route path="communities" element={<CommunitiesPage />} />
+              {/* Add the new route for CommunityDetailPage */}
+              <Route path="communities/:id" element={<CommunityDetailPage />} />
               <Route path="leaderboard" element={<LeaderboardPage />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />

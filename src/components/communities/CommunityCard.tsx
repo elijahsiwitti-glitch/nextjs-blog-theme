@@ -13,7 +13,7 @@ interface CommunityCardProps {
   description: string;
   members: number;
   discussions: number;
-  link: string;
+  link: string; // This link will now be dynamic
   className?: string;
 }
 
@@ -46,7 +46,9 @@ const CommunityCard: React.FC<CommunityCardProps> = ({
       </CardContent>
       <CardFooter className="pt-4 border-t">
         <Button asChild className="w-full">
-          <Link to={link}>View Community</Link>
+          <Link to={`/communities/${id}`}> {/* Updated link to use the community ID */}
+            View Community
+          </Link>
         </Button>
       </CardFooter>
     </Card>
