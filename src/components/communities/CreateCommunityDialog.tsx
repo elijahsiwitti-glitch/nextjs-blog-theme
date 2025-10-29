@@ -14,6 +14,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { PlusCircle } from "lucide-react";
+import { showSuccess } from "@/utils/toast"; // Import showSuccess
 
 interface CreateCommunityDialogProps {
   children: React.ReactNode;
@@ -26,6 +27,7 @@ const CreateCommunityDialog: React.FC<CreateCommunityDialogProps> = ({ children 
     e.preventDefault();
     // In a real app, you'd handle form submission here, e.g., send to an API
     console.log("Community created!");
+    showSuccess("New community created successfully!"); // Show success toast
     setOpen(false); // Close dialog on submit
   };
 

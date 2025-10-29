@@ -14,6 +14,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { PlusCircle } from "lucide-react";
+import { showSuccess } from "@/utils/toast"; // Import showSuccess
 
 interface SubmitIdeaDialogProps {
   children: React.ReactNode;
@@ -26,6 +27,7 @@ const SubmitIdeaDialog: React.FC<SubmitIdeaDialogProps> = ({ children }) => {
     e.preventDefault();
     // In a real app, you'd handle form submission here, e.g., send to an API
     console.log("Idea submitted!");
+    showSuccess("Your idea has been submitted successfully!"); // Show success toast
     setOpen(false); // Close dialog on submit
   };
 
