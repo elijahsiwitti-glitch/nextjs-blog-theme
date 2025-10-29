@@ -6,13 +6,25 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { showSuccess, showError } from "@/utils/toast"; // Import toast functions
 
 const SettingsPage = () => {
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleProfileSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, you'd handle form submission here
-    console.log("Settings saved!");
-    // You might want to show a toast notification here
+    console.log("Profile settings saved!");
+    showSuccess("Profile information updated successfully!");
+  };
+
+  const handlePasswordSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log("Password updated!");
+    showSuccess("Your password has been updated!");
+  };
+
+  const handleDeleteAccount = () => {
+    console.log("Attempting to delete account!");
+    showError("Account deletion is not yet implemented.");
+    // In a real app, this would trigger a confirmation dialog or a more complex flow.
   };
 
   return (
@@ -26,7 +38,7 @@ const SettingsPage = () => {
             <CardDescription>Update your account's profile information and email address.</CardDescription>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleProfileSubmit} className="space-y-6">
               <div className="grid gap-2">
                 <Label htmlFor="name">Name</Label>
                 <Input id="name" defaultValue="Socio Gain User" />
@@ -46,7 +58,7 @@ const SettingsPage = () => {
             <CardDescription>Change your password.</CardDescription>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handlePasswordSubmit} className="space-y-6">
               <div className="grid gap-2">
                 <Label htmlFor="current-password">Current Password</Label>
                 <Input id="current-password" type="password" />
@@ -75,7 +87,7 @@ const SettingsPage = () => {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <Button variant="destructive">Delete Account</Button>
+          <Button variant="destructive" onClick={handleDeleteAccount}>Delete Account</Button>
         </CardContent>
       </Card>
     </div>
