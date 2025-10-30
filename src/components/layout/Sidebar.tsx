@@ -64,7 +64,7 @@ export function Sidebar() {
             <span className="sr-only">Toggle Menu</span>
           </Button>
         </SheetTrigger>
-        <SheetContent side="left" className="flex flex-col w-64 p-0 bg-sidebar">
+        <SheetContent side="left" className="flex flex-col w-full p-0 bg-sidebar"> {/* Changed w-64 to w-full */}
           <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
             <Link to="/" className="flex items-center gap-2 font-semibold text-sidebar-primary">
               <span className="text-lg">Socio Gain</span>

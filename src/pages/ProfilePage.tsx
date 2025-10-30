@@ -41,7 +41,7 @@ const ProfilePage = () => {
   };
 
   return (
-    <div className="container mx-auto"> {/* Removed px-4 py-8 to use container's default padding */}
+    <div className="container mx-auto py-8"> {/* Added py-8 for consistent vertical spacing */}
       <div className="relative bg-background rounded-lg shadow-xl overflow-hidden">
         <ProfileBanner imageUrl={currentUser.banner} />
         <div className="p-6">
