@@ -1,14 +1,18 @@
 "use client";
 
+import React from "react";
 import ProfileBanner from "@/components/profile/ProfileBanner";
 import ProfileCard from "@/components/profile/ProfileCard";
 import SocialLinks from "@/components/profile/SocialLinks";
 import BadgesDisplay from "@/components/profile/BadgesDisplay";
 import RankDisplay from "@/components/profile/RankDisplay";
+import EditProfileDialog from "@/components/profile/EditProfileDialog"; // Import the new dialog
+import { Button } from "@/components/ui/button";
+import { Pencil } from "lucide-react";
 
 const ProfilePage = () => {
-  // Mock data for demonstration
-  const currentUser = {
+  // Mock data for demonstration, now managed in state
+  const [currentUser, setCurrentUser] = React.useState({
     name: "Socio Gain User",
     bio: "Passionate about global engagement and innovation. Always looking for new ideas to support!",
     avatar: "https://avatars.githubusercontent.com/u/124599?v=4", // Example avatar
@@ -24,6 +28,16 @@ const ProfilePage = () => {
     ],
     rank: "Innovator Elite",
     points: 1250,
+  });
+
+  const handleProfileSave = (data: { userName: string; userBio?: string }) => {
+    setCurrentUser((prevUser) => ({
+      ...prevUser,
+      name: data.userName,
+      bio: data.userBio,
+    }));
+    // In a real app, you'd send this data to an API
+    console.log("Profile updated:", data);
   };
 
   return (
@@ -31,6 +45,16 @@ const ProfilePage = () => {
       <div className="relative bg-background rounded-lg shadow-xl overflow-hidden">
         <ProfileBanner imageUrl={currentUser.banner} />
         <div className="p-6">
+          <div className="flex justify-end mb-4">
+            <EditProfileDialog
+              initialData={{ name: currentUser.name, bio: currentUser.bio }}
+              onSave={handleProfileSave}
+            >
+              <Button variant="outline" size="sm">
+                <Pencil className="mr-2 h-4 w-4" /> Edit Profile
+              </Button>
+            </EditProfileDialog>
+          </div>
           <ProfileCard
             userName={currentUser.name}
             userBio={currentUser.bio}
